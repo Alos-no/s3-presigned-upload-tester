@@ -274,11 +274,13 @@ class TestCLIIntegration:
         import subprocess
         import sys
 
+        import pathlib
+        project_root = pathlib.Path(__file__).parent.parent
         result = subprocess.run(
             [sys.executable, "-m", "src", "--help"],
             capture_output=True,
             text=True,
-            cwd=r"p:\Drone\Apps\_Utilities\S3UploadEnforcementTest",
+            cwd=project_root,
         )
 
         assert result.returncode == 0
@@ -289,11 +291,13 @@ class TestCLIIntegration:
         import subprocess
         import sys
 
+        import pathlib
+        project_root = pathlib.Path(__file__).parent.parent
         result = subprocess.run(
             [sys.executable, "-m", "src", "-c", "nonexistent.json"],
             capture_output=True,
             text=True,
-            cwd=r"p:\Drone\Apps\_Utilities\S3UploadEnforcementTest",
+            cwd=project_root,
         )
 
         assert result.returncode == 2
@@ -304,11 +308,13 @@ class TestCLIIntegration:
         import subprocess
         import sys
 
+        import pathlib
+        project_root = pathlib.Path(__file__).parent.parent
         result = subprocess.run(
             [sys.executable, "-m", "src", "-p", "nonexistent_provider"],
             capture_output=True,
             text=True,
-            cwd=r"p:\Drone\Apps\_Utilities\S3UploadEnforcementTest",
+            cwd=project_root,
         )
 
         assert result.returncode == 2
