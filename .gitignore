@@ -6,8 +6,12 @@ __pycache__/
 .Python
 env/
 venv/
+.venv/
 pip-wheel-metadata/
 pip-selfcheck.json
+*.egg-info/
+dist/
+build/
 
 # Configuration files
 # NEVER commit the config file containing secrets.
@@ -20,3 +24,23 @@ config.json
 # OS-specific
 .DS_Store
 Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Type checking
+.mypy_cache/
+
+# Site generated data (on main branch)
+site/data/
+
+# Claude Code
+specs/
+.claude/
+CLAUDE.md
+MASTER-PROMPT.md
+nul

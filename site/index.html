@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S3 Provider Compliance Dashboard</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <div class="logo-text">
+                    <h1>S3 Compliance</h1>
+                    <span class="subtitle">Content-Length Enforcement Monitor</span>
+                </div>
+            </div>
+            <div class="header-meta">
+                <span class="last-updated" id="last-updated">Loading...</span>
+                <a href="https://github.com/Alos-no/s3-presigned-upload-tester" class="github-link" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Introduction -->
+        <section class="intro-section">
+            <div class="intro-content">
+                <h2>Why Content-Length Enforcement Matters</h2>
+                <p>When applications use presigned URLs to upload files directly to S3-compatible storage, the server must enforce the Content-Length specified in the signed request. Without proper enforcement, attackers can exploit mismatches to upload malicious content, bypass size limits, or corrupt data integrity. This dashboard monitors how well major cloud storage providers enforce these critical security boundaries.</p>
+            </div>
+        </section>
+
+        <!-- Provider Cards -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <h2>Provider Status</h2>
+                    <span class="section-badge" id="provider-count">0 providers</span>
+                </div>
+                <div class="section-header-stats" id="stats-grid">
+                    <!-- Will be populated by JS -->
+                </div>
+            </div>
+            <div class="provider-grid" id="provider-cards">
+                <div class="loading-state">Loading provider data...</div>
+            </div>
+        </section>
+
+        <!-- Heatmap -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Test History</h2>
+                <span class="section-subtitle">Provider compliance over time</span>
+            </div>
+            <div id="heatmap-container">
+                <div class="loading-state">Loading history...</div>
+            </div>
+        </section>
+
+        <!-- Activity Feed -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Recent Activity</h2>
+            </div>
+            <div class="activity-feed" id="changelog">
+                <div class="loading-state">Loading activity...</div>
+            </div>
+        </section>
+
+        <!-- Test Cases Reference -->
+        <section class="section collapsible">
+            <details open>
+                <summary class="section-header clickable">
+                    <h2>Test Cases Reference</h2>
+                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </summary>
+                <h4 class="test-category-title">Multipart Upload Tests (UploadPart)</h4>
+                <div class="test-cases-grid">
+                    <div class="test-case">
+                        <div class="test-case-header">
+                            <span class="test-case-id">CL&gt;</span>
+                            <span class="test-case-expect reject">Reject</span>
+                        </div>
+                        <h4>Content-Length &gt; Body</h4>
+                        <p>Header claims more bytes than actually sent</p>
+                    </div>
+                    <div class="test-case">
+                        <div class="test-case-header">
+                            <span class="test-case-id">CL&lt;</span>
+                            <span class="test-case-expect reject">Reject</span>
+                        </div>
+                        <h4>Content-Length &lt; Body</h4>
+                        <p>Header claims fewer bytes than actually sent</p>
+                    </div>
+                    <div class="test-case">
+                        <div class="test-case-header">
+                            <span class="test-case-id">Sig&gt;</span>
+                            <span class="test-case-expect reject">Reject</span>
+                        </div>
+                        <h4>Signed &gt; Actual</h4>
+                        <p>Presigned URL size exceeds upload</p>
+                    </div>
+                    <div class="test-case">
+                        <div class="test-case-header">
+                            <span class="test-case-id">Sig&lt;</span>
+                            <span class="test-case-expect reject">Reject</span>
+                        </div>
+                        <h4>Signed &lt; Actual</h4>
+                        <p>Upload exceeds presigned URL size</p>
+                    </div>
+                    <div class="test-case">
+                        <div class="test-case-header">
+                            <span class="test-case-id">Ctrl</span>
+                            <span class="test-case-expect accept">Accept</span>
+                        </div>
+                        <h4>Control Group</h4>
+                        <p>Valid request (baseline test)</p>
+                    </div>
+                    <div class="test-case">
+                        <div class="test-case-header">
+                            <span class="test-case-id">List</span>
+                            <span class="test-case-expect accept">Verify</span>
+                        </div>
+                        <h4>List Parts</h4>
+                        <p>API returns accurate part info</p>
+                    </div>
+                </div>
+                <h4 class="test-category-title">Single-Part Upload Tests (PutObject)</h4>
+                <div class="test-cases-grid">
+                    <div class="test-case">
+                        <div class="test-case-header">
+                            <span class="test-case-id">S:CL&gt;</span>
+                            <span class="test-case-expect reject">Reject</span>
+                        </div>
+                        <h4>Content-Length &gt; Body</h4>
+                        <p>Header claims more bytes than actually sent</p>
+                    </div>
+                    <div class="test-case">
+                        <div class="test-case-header">
+                            <span class="test-case-id">S:CL&lt;</span>
+                            <span class="test-case-expect reject">Reject</span>
+                        </div>
+                        <h4>Content-Length &lt; Body</h4>
+                        <p>Header claims fewer bytes than actually sent</p>
+                    </div>
+                    <div class="test-case">
+                        <div class="test-case-header">
+                            <span class="test-case-id">S:Sig&lt;</span>
+                            <span class="test-case-expect reject">Reject</span>
+                        </div>
+                        <h4>Signed &lt; Actual</h4>
+                        <p>Upload exceeds presigned URL size</p>
+                    </div>
+                    <div class="test-case">
+                        <div class="test-case-header">
+                            <span class="test-case-id">S:Ctrl</span>
+                            <span class="test-case-expect accept">Accept</span>
+                        </div>
+                        <h4>Control Group</h4>
+                        <p>Valid request (baseline test)</p>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <!-- API Access -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Programmatic Access</h2>
+            </div>
+            <div class="api-section">
+                <p class="api-intro">Integrate compliance data into your own monitoring, CI/CD pipelines, or dashboards.</p>
+                <div class="api-endpoints">
+                    <div class="api-endpoint">
+                        <div class="api-endpoint-header">
+                            <span class="api-method">GET</span>
+                            <code class="api-url">data/latest.json</code>
+                        </div>
+                        <p>Current test results for all providers with individual test case outcomes.</p>
+                    </div>
+                    <div class="api-endpoint">
+                        <div class="api-endpoint-header">
+                            <span class="api-method">GET</span>
+                            <code class="api-url">data/history.json</code>
+                        </div>
+                        <p>Historical test data and changelog of status changes over time.</p>
+                    </div>
+                    <div class="api-endpoint">
+                        <div class="api-endpoint-header">
+                            <span class="api-method">GET</span>
+                            <code class="api-url">data/badges/{provider}.svg</code>
+                        </div>
+                        <p>Dynamic SVG badges for each provider (e.g., <code>aws.svg</code>, <code>r2.svg</code>).</p>
+                    </div>
+                </div>
+                <div class="api-example">
+                    <h4>Example: Check if a provider is compliant</h4>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyApiExample()" title="Copy to clipboard">
+                            <svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16">
+                                <path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                            </svg>
+                            <svg class="check-icon" viewBox="0 0 24 24" width="16" height="16" style="display:none">
+                                <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                        </button>
+                        <pre><code id="api-example-code">fetch('data/latest.json')
+  .then(r => r.json())
+  .then(data => {
+    const aws = data.providers.aws;
+    console.log(`AWS S3: ${aws.status}`); // "pass" | "fail" | "error"
+  });</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Automated S3 provider compliance testing</p>
+        <p class="footer-attribution">Built and maintained by <a href="https://alos.no/" target="_blank" rel="noopener">Alos Engineering</a></p>
+    </footer>
+
+    <script src="assets/dashboard.js"></script>
+</body>
+</html>
