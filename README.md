@@ -2,7 +2,7 @@
 
 **Automated compliance testing for S3-compatible storage providers.**
 
-When you generate a presigned URL with a signed `Content-Length`, does your provider actually enforce it? This tool verifies that—continuously.
+When you generate a presigned URL with a signed `Content-Length`, does your provider actually enforce it? This tool finds out.
 
 [**View Live Dashboard**](https://alos-no.github.io/s3-presigned-upload-tester/) · [**Why This Matters**](README-legacy.md)
 
@@ -12,7 +12,7 @@ When you generate a presigned URL with a signed `Content-Length`, does your prov
 
 | Test | Expected | Purpose |
 |------|----------|---------|
-| Upload matches signed size | Accept | Baseline - valid uploads work |
+| Upload matches signed size | Accept | Baseline: valid uploads work |
 | Body larger than signed | Reject | Prevents quota bypass |
 | Body smaller than signed | Reject | Prevents truncation attacks |
 | Header/body mismatch | Reject | Prevents header spoofing |
@@ -75,7 +75,7 @@ site/                  # Static dashboard (GitHub Pages)
 
 ## Background
 
-This project validates the **Manifested Multipart Upload** pattern—a technique for enforcing upload quotas at the storage edge without proxying data through your servers.
+This project validates the **Manifested Multipart Upload** pattern for enforcing upload quotas at the storage edge without proxying data through your servers.
 
 For the full technical deep-dive, see [README-legacy.md](README-legacy.md).
 
