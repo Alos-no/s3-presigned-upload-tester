@@ -311,7 +311,7 @@ class TestCLIIntegration:
         import pathlib
         project_root = pathlib.Path(__file__).parent.parent
         result = subprocess.run(
-            [sys.executable, "-m", "src", "-p", "nonexistent_provider"],
+            [sys.executable, "-m", "src", "-c", "config.example.json", "-p", "nonexistent_provider"],
             capture_output=True,
             text=True,
             cwd=project_root,
