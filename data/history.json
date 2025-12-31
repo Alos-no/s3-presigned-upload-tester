@@ -1,0 +1,75 @@
+{
+  "last_updated": "2025-12-31T20:52:36Z",
+  "providers": {
+    "AWS": {
+      "name": "AWS S3",
+      "current_status": "pass",
+      "first_tested": "2025-12-31",
+      "history": [
+        {
+          "date": "2025-12-31",
+          "status": "pass"
+        }
+      ]
+    },
+    "B2": {
+      "name": "Backblaze B2",
+      "current_status": "pass",
+      "first_tested": "2025-12-31",
+      "history": [
+        {
+          "date": "2025-12-31",
+          "status": "pass"
+        }
+      ]
+    },
+    "GCS": {
+      "name": "Google Cloud Storage",
+      "current_status": "pass",
+      "first_tested": "2025-12-31",
+      "history": [
+        {
+          "date": "2025-12-31",
+          "status": "pass"
+        }
+      ]
+    },
+    "R2": {
+      "name": "Cloudflare R2",
+      "current_status": "pass",
+      "first_tested": "2025-12-31",
+      "history": [
+        {
+          "date": "2025-12-31",
+          "status": "pass"
+        }
+      ]
+    }
+  },
+  "changelog": [
+    {
+      "date": "2025-12-31",
+      "provider": "R2",
+      "change": "pass",
+      "message": "Cloudflare R2 first tested - pass"
+    },
+    {
+      "date": "2025-12-31",
+      "provider": "GCS",
+      "change": "pass",
+      "message": "Google Cloud Storage first tested - pass"
+    },
+    {
+      "date": "2025-12-31",
+      "provider": "B2",
+      "change": "pass",
+      "message": "Backblaze B2 first tested - pass"
+    },
+    {
+      "date": "2025-12-31",
+      "provider": "AWS",
+      "change": "pass",
+      "message": "AWS S3 first tested - pass"
+    }
+  ]
+}

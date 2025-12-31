@@ -1,0 +1,282 @@
+{
+  "timestamp": "2025-12-31T20:52:36Z",
+  "providers": {
+    "AWS": {
+      "name": "AWS S3",
+      "status": "pass",
+      "cases": {
+        "case_1": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_2": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_5": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_6": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_7": {
+          "status": "pass",
+          "expected": "accepted",
+          "actual": "accepted",
+          "error_message": null
+        },
+        "case_8": {
+          "status": "pass",
+          "expected": "parts match",
+          "actual": "parts match",
+          "error_message": null
+        },
+        "case_9": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_10": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_11": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_12": {
+          "status": "pass",
+          "expected": "accepted",
+          "actual": "accepted",
+          "error_message": null
+        }
+      },
+      "duration_seconds": 26.534117698669434,
+      "error_message": null
+    },
+    "B2": {
+      "name": "Backblaze B2",
+      "status": "pass",
+      "cases": {
+        "case_1": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_2": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_5": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_6": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_7": {
+          "status": "pass",
+          "expected": "accepted",
+          "actual": "accepted",
+          "error_message": null
+        },
+        "case_8": {
+          "status": "pass",
+          "expected": "parts match",
+          "actual": "parts match",
+          "error_message": null
+        },
+        "case_9": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_10": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_11": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_12": {
+          "status": "pass",
+          "expected": "accepted",
+          "actual": "accepted",
+          "error_message": null
+        }
+      },
+      "duration_seconds": 35.6894268989563,
+      "error_message": null
+    },
+    "GCS": {
+      "name": "Google Cloud Storage",
+      "status": "pass",
+      "cases": {
+        "case_1": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_2": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_5": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_6": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_7": {
+          "status": "pass",
+          "expected": "accepted",
+          "actual": "accepted",
+          "error_message": null
+        },
+        "case_8": {
+          "status": "pass",
+          "expected": "parts match",
+          "actual": "parts match",
+          "error_message": null
+        },
+        "case_9": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_10": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_11": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_12": {
+          "status": "pass",
+          "expected": "accepted",
+          "actual": "accepted",
+          "error_message": null
+        }
+      },
+      "duration_seconds": 29.15246605873108,
+      "error_message": null
+    },
+    "R2": {
+      "name": "Cloudflare R2",
+      "status": "pass",
+      "cases": {
+        "case_1": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_2": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_5": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_6": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_7": {
+          "status": "pass",
+          "expected": "accepted",
+          "actual": "accepted",
+          "error_message": null
+        },
+        "case_8": {
+          "status": "pass",
+          "expected": "parts match",
+          "actual": "parts match",
+          "error_message": null
+        },
+        "case_9": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_10": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_11": {
+          "status": "pass",
+          "expected": "rejected",
+          "actual": "rejected",
+          "error_message": null
+        },
+        "case_12": {
+          "status": "pass",
+          "expected": "accepted",
+          "actual": "accepted",
+          "error_message": null
+        }
+      },
+      "duration_seconds": 8.432645320892334,
+      "error_message": null
+    }
+  },
+  "summary": {
+    "total_providers": 4,
+    "passed": 4,
+    "failed": 0
+  }
+}
