@@ -4,7 +4,7 @@
 
 When you generate a presigned URL with a signed `Content-Length`, does your provider actually enforce it? This tool finds out.
 
-[**View Live Dashboard**](https://alos-no.github.io/s3-presigned-upload-tester/) · [**Why This Matters**](README-legacy.md)
+[**View Live Dashboard**](https://s3.alos.no)
 
 ---
 
@@ -25,10 +25,10 @@ Tests run against both **multipart uploads** (`UploadPart`) and **single-part up
 
 | Provider | Status |
 |----------|--------|
-| AWS S3 | ![AWS](https://alos-no.github.io/s3-presigned-upload-tester/data/badges/aws.svg) |
-| Cloudflare R2 | ![R2](https://alos-no.github.io/s3-presigned-upload-tester/data/badges/r2.svg) |
-| Backblaze B2 | ![B2](https://alos-no.github.io/s3-presigned-upload-tester/data/badges/b2.svg) |
-| Google Cloud Storage | ![GCS](https://alos-no.github.io/s3-presigned-upload-tester/data/badges/gcs.svg) |
+| AWS S3 | ![AWS](https://s3.alos.no/data/badges/aws.svg) |
+| Cloudflare R2 | ![R2](https://s3.alos.no/data/badges/r2.svg) |
+| Backblaze B2 | ![B2](https://s3.alos.no/data/badges/b2.svg) |
+| Google Cloud Storage | ![GCS](https://s3.alos.no/data/badges/gcs.svg) |
 
 ---
 
@@ -76,8 +76,6 @@ site/                  # Static dashboard (GitHub Pages)
 ## Background
 
 This project validates the **Manifested Multipart Upload** pattern for enforcing upload quotas at the storage edge without proxying data through your servers.
-
-For the full technical deep-dive, see [README-legacy.md](README-legacy.md).
 
 ---
 
