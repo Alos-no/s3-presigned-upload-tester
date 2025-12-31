@@ -1,0 +1,42 @@
+{
+  "aws": {
+    "provider_name": "AWS S3",
+    "enabled": true,
+    "endpoint_url": "https://s3.us-east-1.amazonaws.com",
+    "aws_access_key_id": "YOUR_AWS_ACCESS_KEY",
+    "aws_secret_access_key": "YOUR_AWS_SECRET_KEY",
+    "region_name": "us-east-1",
+    "bucket_name": "your-test-bucket",
+    "addressing_style": "virtual"
+  },
+  "b2": {
+    "provider_name": "Backblaze B2",
+    "enabled": false,
+    "endpoint_url": "https://s3.us-west-000.backblazeb2.com",
+    "aws_access_key_id": "YOUR_B2_ACCESS_KEY",
+    "aws_secret_access_key": "YOUR_B2_SECRET_KEY",
+    "region_name": "us-west-000",
+    "bucket_name": "your-test-bucket",
+    "addressing_style": "virtual"
+  },
+  "r2": {
+    "provider_name": "Cloudflare R2",
+    "enabled": false,
+    "endpoint_url": "https://YOUR_ACCOUNT_ID.r2.cloudflarestorage.com",
+    "aws_access_key_id": "YOUR_R2_ACCESS_KEY",
+    "aws_secret_access_key": "YOUR_R2_SECRET_KEY",
+    "region_name": "auto",
+    "bucket_name": "your-test-bucket",
+    "addressing_style": "path"
+  },
+  "gcs": {
+    "provider_name": "Google Cloud Storage",
+    "enabled": false,
+    "endpoint_url": "https://storage.googleapis.com",
+    "aws_access_key_id": "YOUR_GCS_ACCESS_KEY",
+    "aws_secret_access_key": "YOUR_GCS_SECRET_KEY",
+    "region_name": "auto",
+    "bucket_name": "your-test-bucket",
+    "addressing_style": "path"
+  }
+}
