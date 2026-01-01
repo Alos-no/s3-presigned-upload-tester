@@ -83,26 +83,19 @@ jobs:
             results.json
             site/data/
 
-      - name: Checkout gh-pages branch
+      - name: Setup Pages
         if: github.event_name != 'pull_request'
-        uses: actions/checkout@v4
+        uses: actions/configure-pages@v4
+
+      - name: Add CNAME for custom domain
+        if: github.event_name != 'pull_request'
+        run: echo "s3.alos.no" > site/CNAME
+
+      - name: Upload pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
         with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Update gh-pages with new data
-        if: github.event_name != 'pull_request'
-        run: |
-          # Copy new data to gh-pages
-          cp -r site/data/* gh-pages/data/ 2>/dev/null || mkdir -p gh-pages/data && cp -r site/data/* gh-pages/data/
-
-          # Commit and push changes
-          cd gh-pages
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff --staged --quiet || git commit -m "Update test results - $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          git push
+          path: site/
 
   deploy:
     needs: test
@@ -114,19 +107,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
