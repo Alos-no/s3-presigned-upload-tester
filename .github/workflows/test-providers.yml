@@ -44,6 +44,11 @@ jobs:
         run: |
           python -m pytest -m "not e2e" --tb=short
 
+      - name: Restore published history
+        run: |
+          mkdir -p site/data
+          curl -fsSL https://s3.alos.no/data/history.json -o site/data/history.json || true
+
       - name: Run provider tests
         env:
           # Provider configuration (parsed from PROVIDER_* variables)
